@@ -41,7 +41,6 @@ To run the explainer for the graph classification example "REDDIT-BINARY" run:
 
 ```
 python rere.py --dataset=REDDIT-BINARY --graph-idx=3 --graph-mode
-
 ```
 
 The policy can be changed in rere.py file. 

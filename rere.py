@@ -5,8 +5,7 @@
 """
 
 
-import sys
-sys.path.insert(0, '/home/poweruser/RERE/RERE/evaluation')
+
 import os
 from tensorboardX import SummaryWriter
 import shutil
@@ -374,8 +373,7 @@ def main():
           ckpt_path = "ckpt/Mutagenicity_base_h20_o20.pth.tar"
           #NonMutag
           #policy = "log/models/policy_exp_Mutagenicity_150000__diff_nonmutag44.pth"
-          node_indices = [1,2]
-          
+          node_indices = [1,2]          
           #Mutag
           policy = "log/models/policy_exp_Mutagenicity_150000__diff_mutag30.pth"
        
@@ -389,12 +387,9 @@ def main():
        for j, node_idx in enumerate(node_indices):
            index += 1
            graph_idx = node_idx
-           print("graph idx", graph_idx)
-           print("graph mode", graph_mode)
+          
            if graph_mode:
-               print("graph idx", graph_idx)
-               print("adj", adj.shape)
-               #print("model", model)
+               
                adj_new = adj[graph_idx].cpu().detach().numpy()
        
                feat_new = feat[graph_idx, :].numpy()
@@ -405,11 +400,9 @@ def main():
                data = from_networkx(G)
 
                edge_index = data.edge_index.long().to(device)
-               print("edge index", edge_index.shape)
-               print(graph_idx,":", G.size())       
                x = torch.from_numpy(feat_new.reshape(-1, feat_new.shape[-1])).float().to(device)
                data.input_dim = x.shape[1]
-               print("x shape", x.shape)
+               
        
            else:
               
